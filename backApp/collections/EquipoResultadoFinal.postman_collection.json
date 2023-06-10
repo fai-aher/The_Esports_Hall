@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "ff51d585-242e-4816-af01-dc3ba94444af",
+		"name": "EquipoResultadoFinal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25627050"
+	},
+	"item": [
+		{
+			"name": "Obtener los Resultados Finales",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data= JSON.parse(responseBody);\r",
+							"tests[\"Resultados de un Equipo No genera error en el Get all\"] = responseCode.code === 200;\r",
+							"tests[\"Conteo aprobado\"] = data.length >= 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/resultados",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"resultados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener el Resultado de una Competencia",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"Resultado de un Equipo no genera error en el Get.\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/resultados/{{competencia_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"resultados",
+						"{{competencia_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener el Resultado de una Invalida Competencia",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se ha encontrado una competencia con esa id.\"] = responseCode.code === 404; \r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No se ha encontrado una competencia con esa id.\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/resultados/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"resultados",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

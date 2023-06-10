@@ -1,0 +1,114 @@
+<!-- Navigation bar -->
+<div class="container-fluid" style="background-color: #21262F;">
+  <div class="row">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #18191D; filter: drop-shadow(0px 10px 10px black);">
+      <div class="container-fluid">
+
+        <a class="navbar-brand" routerLink="/inicio"><img src="https://i.ibb.co/ZBcFvHQ/Esports-Hall-bg.png" alt="Esports-Hall" style="height: 80px; margin: -12px;"/></a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/inicio" id="navbarLinkI" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">INICIO</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/torneos/list" id="navbarLinkI" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">TORNEOS</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/equipos/list" id="navbarLinkI" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">EQUIPOS</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/jugadores/list" id="navbarLinkI" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">JUGADORES</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <!-- Main Router Outlet -->
+  <div class="row" id="principal">
+    <div class="row main-text" style="height: calc(110%); max-height:110%; width: calc(105% - 25px); max-width:105%; background-color: #21262F;">
+      <div class="col-md-12">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <footer class="fixed-bottom page-footer pt-4" style="background-color: #18191D; height:fit-content;">
+
+      <!-- Footer Links -->
+      <div class="container-fluid text-center">
+
+        <div class="row vcenter">
+
+          <div class="col-md-4 align-left">
+            <div class="row">
+              <div class="col-md-2">
+                <img src="https://i.ibb.co/VjPtysN/asamix-nobg.png" height="100" alt="ASAMIX" style="margin-bottom: 10px; margin-top: -10px;">
+              </div>
+              <div class="col-md-4 align-left" style="padding-top: 10px; position: fixed; max-width: 430px; min-width: 430px;" >
+                <div class="row align-center">
+                  <p style="color:white; margin-bottom: 5px;">© 2023 ASAMIX, Inc.</p>
+                </div>
+                <!--Social media buttons row-->
+                <div class="row">
+                  <span style="display: inline; text-align: center;">
+                    <a rel="noopener noreferrer" href="https://github.com/Uniandes-isis2603/ISIS2603_202310_S4_E1_ESports_Front" target="_blank">
+                      <button type="button" class="mini-circle-btn"><img class="mini-img" src="https://i.ibb.co/YdsXmP9/instagram.png" alt="instagram"/></button>
+                    </a>
+                    <a rel="noopener noreferrer" href="https://github.com/Uniandes-isis2603/ISIS2603_202310_S4_E1_ESports_Front" target="_blank">
+                      <button type="button" class="mini-circle-btn"><img class="mini-img" src="https://i.ibb.co/DQ5TkZg/facebook.png" alt="facebook"/></button>
+                    </a>
+                    <a rel="noopener noreferrer" href="https://github.com/Uniandes-isis2603/ISIS2603_202310_S4_E1_ESports_Front" target="_blank">
+                      <button type="button" class="mini-circle-btn"><img class="mini-img" src="https://i.ibb.co/6RnRZ3c/twitter.png" alt="twitter"/></button>
+                    </a>
+                    <a rel="noopener noreferrer" href="https://github.com/Uniandes-isis2603/ISIS2603_202310_S4_E1_ESports_Front" target="_blank">
+                      <button type="button" class="mini-circle-btn"><img class="mini-img" src="https://i.ibb.co/BwXJWQQ/youtube.png" alt="youtube"/></button>
+                    </a>
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <p class="text-muted">Aplicación web desarrollada para el curso de Desarrollo de Software en Equipos de la Universidad de los Andes (Bogotá, Colombia)</p>
+          </div>
+
+          <div class="col-md-4 align-right">
+            <!--ASAMIX buttons row-->
+            <div class="row" style="margin-bottom: 20px;">
+              <span style="display: inline;">
+                <a rel="noopener noreferrer" href="https://github.com/Uniandes-isis2603/ISIS2603_202310_S4_E1_ESports_Front" target="_blank">
+                  <button type="button" style="background-color:#7DE8C0;" class="btn asamix-btn"> Sobre Asamix <img class="mini-arrow" src="https://i.ibb.co/jgTmD5R/arrow.png" alt="arrow"/></button>
+                </a>
+                <img class="mini-img" src="https://i.ibb.co/qyvbqjs/profile-user.png" alt="person" style="padding-left:10px;"/>
+              </span>
+              <p></p>
+              <span style="display: inline;">
+                <a rel="noopener noreferrer" href="https://github.com/Uniandes-isis2603/ISIS2603_202310_S4_E1_ESports_Front" target="_blank">
+                  <button type="button" style="background-color:#A8B5EE;" class="btn asamix-btn"> Contáctanos <img class="mini-arrow" src="https://i.ibb.co/jgTmD5R/arrow.png" alt="arrow"/></button>
+                </a>
+                <img class="mini-img" src="https://i.ibb.co/m5p7z9j/information.png" alt="info" style="padding-left:10px;"/>
+              </span>
+            </div>
+          </div>
+
+        </div>
+        <!-- Grid row -->
+
+      </div>
+    </footer>
+  </div>
+</div>
+</div>

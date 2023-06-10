@@ -1,0 +1,17 @@
+<div *ngIf="selected">
+  <app-logro-detail [logroDetail]="selectedLogro"></app-logro-detail>
+</div>
+
+<hr />
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col mb-2" *ngFor="let logro of logros">
+          <div class="card p-2" style="width: 15rem; height: 33rem">
+              <div class="card-body">
+                  <p class="card-text">[{{ logro.descripcion }}]</p>
+              </div>
+           </div>
+      </div>
+   </div>
+</div>

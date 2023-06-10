@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div>
+    <div class="selected-competencia rounded" *ngIf="selected">
+      <app-competencia-detail [competenciaDetail]="selectedCompetencia"></app-competencia-detail>
+    </div>
+    <div class="row ">
+      <div class="col mb-2"  *ngFor="let competencia of competencias">
+        <div class="card p-2" style="width: 15rem; height: 33rem">
+          <img class="card-img-top" src="" alt="{{ competencia.nombre }}" (click)="onSelected(competencia)" />
+          <div class="card-body">
+            <h5 class="card-title">{{ competencia.nombre }}</h5>
+            <p class="card-text">[{{ competencia.duracion }}]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

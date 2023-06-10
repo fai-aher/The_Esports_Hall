@@ -1,0 +1,37 @@
+<div *ngIf="selected">
+  <app-jugador-detail [jugadorDetail]="selectedJugador"></app-jugador-detail>
+</div>
+<hr>
+<h2 class="listTitle">Lista de Jugadores</h2>
+<p class="indication">Haz click sobre una de las fotografias de los jugadores para ver su detalle en esta página o presiona el nombre para revisarlo por aparte.</p>
+<hr>
+
+<hr>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col mb-2" *ngFor="let jugador of jugadores">
+      <div class="card p-2" style="width: 15rem; height: 33rem">
+          <img
+            class="card-img-top"
+            src="{{ jugador.fotografia }}"
+            alt="{{ jugador.nombre }}"
+            (click)="onSelected(jugador)"
+          />
+          <div class="card-body">
+            <h5 class="card-title">
+              <a class = "linkToDetail" routerLink="/jugadores/{{ jugador.id }}">{{ jugador.nombre }}</a>
+            </h5>
+              <p class="card-text">
+                 <strong>Nickname: </strong>
+                 {{ jugador.nickname }}
+                 <strong>Nacionalidad: </strong>
+                 {{ jugador.nacionalidad }}
+                 <strong>Fecha Nacimiento: </strong>
+                 {{ jugador.fechaNacimiento | date:'dd-MM-yyyy' }}
+             </p>
+          </div>
+       </div>
+      </div>
+   </div>
+</div>

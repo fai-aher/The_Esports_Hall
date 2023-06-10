@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "01785e72-29c2-4dfb-af0b-8fbb910b2572",
+		"name": "CompetenciaEquipo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25533646"
+	},
+	"item": [
+		{
+			"name": "Obtener un equipo participante de una competencia",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/competencias/{{competencia_id_1}}/equipos/{{equipo_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"competencias",
+						"{{competencia_id_1}}",
+						"equipos",
+						"{{equipo_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un equipo participante de una competencia",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/competencias/{{competencia_id_1}}/equipos/{{equipo_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"competencias",
+								"{{competencia_id_1}}",
+								"equipos",
+								"{{equipo_id_1}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"RRRNetworkGaming\",\r\n    \"paisProcedencia\": \"Colombia\",\r\n    \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg\",\r\n    \"logo\": \"https://variety.com/wp-content/uploads/2022/06/Puss-in-Boots-The-Last-Wish.jpg?w=681&h=383&crop=1\",\r\n    \"integrantes\": [],\r\n    \"torneosParticipados\": [],\r\n    \"resultadosEnCompetencias\":[]\r\n    \"competenciaParticipada\": [],\r\n    \"competenciasGanadas\": []\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un equipo que no existe en una competencia",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"El equipo con el id dado no fue encontrado\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/competencias/{{competencia_id_1}}/equipos/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"competencias",
+						"{{competencia_id_1}}",
+						"equipos",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un equipo que no existe en una competencia",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/competencias/{{competencia_id_1}}/equipos/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"competencias",
+								"{{competencia_id_1}}",
+								"equipos",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"apierror\": {\n        \"status\": \"NOT_FOUND\",\n        \"timestamp\": \"01-04-2023 08:07:46\",\n        \"message\": \"El equipo con el id dado no fue encontrado\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un equipo que no esta asociado a una competencia",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"El equipo dado no está asociada con la competencia\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/competencias/{{competencia_id_1}}/equipos/{{equipo_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"competencias",
+						"{{competencia_id_1}}",
+						"equipos",
+						"{{equipo_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un equipo que no esta asociado a una competencia",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/competencias/{{competencia_id_1}}/equipos/{{equipo_id_2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"competencias",
+								"{{competencia_id_1}}",
+								"equipos",
+								"{{equipo_id_2}}"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"apierror\": {\r\n        \"status\": \"PRECONDITION_FAILED\",\r\n        \"timestamp\": \"01-04-2023 08:07:46\",\r\n        \"message\": \"El equipo dado no está asociada con la competencia\"\r\n    }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener los equipos de una competencia",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of books > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/competencias/{{competencia_id_1}}/equipos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"competencias",
+						"{{competencia_id_1}}",
+						"equipos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener los equipos de una competencia",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/competencias/{{competencia_id_1}}/equipos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"competencias",
+								"{{competencia_id_1}}",
+								"equipos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\r\n    {\r\n    \"id\": 1,\r\n    \"nombre\": \"RRRNetworkGaming\",\r\n    \"paisProcedencia\": \"Colombia\",\r\n    \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg\",\r\n    \"logo\": \"https://variety.com/wp-content/uploads/2022/06/Puss-in-Boots-The-Last-Wish.jpg?w=681&h=383&crop=1\",\r\n    \"integrantes\": [],\r\n    \"torneosParticipados\": [],\r\n    \"resultadosEnCompetencias\":[]\r\n    \"competenciaParticipada\": [],\r\n    \"competenciasGanadas\": []\r\n}\r\n]"
+				}
+			]
+		}
+	]
+}

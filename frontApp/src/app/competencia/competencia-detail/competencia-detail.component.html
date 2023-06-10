@@ -1,0 +1,42 @@
+<div class="container-fluid">
+
+  <p class="h3 p-3">{{ competenciaDetail.nombre }}</p>
+  <div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-10">
+      <dl class="list">
+        <dt>Torneo al que pertenece</dt>
+        <dd>{{ competenciaDetail.torneo.nombreTorneo  }}</dd>
+        <hr />
+        <dt class="bold">Duración de esta competencia</dt>
+        <dd>
+          {{ competenciaDetail.duracion }}
+        </dd>
+        <hr>
+        <dt>Equipo ganador</dt>
+        <dd>{{ competenciaDetail.equipoGanador.nombre }}</dd>
+
+        <hr />
+
+        <dt>Jugador MVP</dt>
+        <dd>{{ competenciaDetail.mvp.nombre }}</dd>
+        <hr />
+
+        <dt>Equipos Participantes</dt>
+        <ul>
+          <li *ngFor="let equiposParticipantes of competenciaDetail.equiposParticipantes">
+            <a class="clickers" routerLink="/equipos/{{ equiposParticipantes.id }}">{{ equiposParticipantes.nombre }}</a>
+          </li>
+        </ul>
+        <hr />
+        <dt>Resultados Finales</dt>
+        <ul>
+          <li *ngFor="let resultadoFinal of competenciaDetail.resultadosFinales">
+            En la Competencia con número de identificación <a class="clickers" routerLink="/competencias/{{ resultadoFinal.competenciaRelacionada.id }}">{{ resultadoFinal.competenciaRelacionada.id }}</a>, alcanzó la posición final: {{ resultadoFinal.posicionFinal }}.
+          </li>
+        </ul>
+      </dl>
+    </div>
+  </div>
+ </div>

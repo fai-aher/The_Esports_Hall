@@ -1,0 +1,41 @@
+<testExecutions version="1">
+  <file path="src/app/app.component.spec.ts">
+    <testCase name="AppComponent should create the app" duration="67"/>
+    <testCase name="AppComponent should have as title 'base-project'" duration="6"/>
+  </file>
+  <file path="src/app/resultadoFinal/resultadoFinal.service.spec.ts">
+    <testCase name="Service: ResultadoFinal should ..." duration="3"/>
+  </file>
+  <file path="src/app/logro/logro.service.spec.ts">
+    <testCase name="Service: Jugador should ..." duration="2"/>
+    <testCase name="Service: Jugador should ..." duration="1"/>
+  </file>
+  <file path="src/app/equipo/equipo-detail/equipo-detail.component.spec.ts">
+    <testCase name="EquipoDetailComponent should create" duration="11"/>
+    <testCase name="EquipoDetailComponent should call getEquipo method when equipoId is provided" duration="3"/>
+    <testCase name="EquipoDetailComponent should display equipoDetail data" duration="2"/>
+  </file>
+  <file path="src/app/resultadoFinal/resultadoFinal-list/resultadoFinal-list.component.spec.ts">
+    <testCase name="ResultadoFinalListComponent should create" duration="5"/>
+  </file>
+  <file path="src/app/competencia/competencia.service.spec.ts">
+    <testCase name="Service: Competencia should ..." duration="1"/>
+  </file>
+  <file path="src/app/equipo/equipo.service.spec.ts">
+    <testCase name="Service: Equipo should ..." duration="1"/>
+  </file>
+  <file path="src/app/logro/logro-detail/logro-detail.component.spec.ts">
+    <testCase name="LogroDetailComponent should create" duration="4"/>
+  </file>
+  <file path="src/app/torneo/torneo.service.spec.ts">
+    <testCase name="Service: Torneo should ..." duration="1"/>
+  </file>
+  <file path="src/app/logro/logro-list/logro-list.component.spec.ts">
+    <testCase name="LogroListComponent should create" duration="11"/>
+    <testCase name="LogroListComponent should have 9 &lt;div.col.mb-2> elements and the deleted jugador should not exist" duration="5"/>
+    <testCase name="LogroListComponent should have p tag with the logro.descripcion" duration="3"/>
+    <testCase name="LogroListComponent should have 10 &lt;card.p-2> elements" duration="3"/>
+    <testCase name="LogroListComponent should have 10 &lt;div.col.mb-2> elements" duration="4"/>
+    <testCase name="LogroListComponent should have 10 &lt;div.card-body> elements" duration="3"/>
+  </file>
+</testExecutions>

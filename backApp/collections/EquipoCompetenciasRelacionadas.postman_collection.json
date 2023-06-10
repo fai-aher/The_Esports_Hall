@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "54e18845-db44-4766-bfa8-3891b98c6ffb",
+		"name": "EquipoCompetenciasRelacionadas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25627050"
+	},
+	"item": [
+		{
+			"name": "Agregar una Competencia Participada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Agregar Competencia a Equipo no genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_2}}/competenciasParticipadas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_2}}",
+						"competenciasParticipadas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar una Competencia Participada 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Agregar Competencia a Equipo no genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_2}}/competenciasParticipadas/{{competencia_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_2}}",
+						"competenciasParticipadas",
+						"{{competencia_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar una  Invalida Competencia Participada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se ha encontrado la competencia con el id pasado por parametro.\"] = responseCode.code === 404;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No se ha encontrado la competencia con el id pasado por parametro.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id}}/competenciasParticipadas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id}}",
+						"competenciasParticipadas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener las Competencia Participadas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"No genera error el Get de Competencias Participadas de un equipo\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_2}}/competenciasParticipadas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_2}}",
+						"competenciasParticipadas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una Competencia Participada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"No genera error el Get de una Competencia Participada de un equipo\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_2}}/competenciasParticipadas/{{competencia_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_2}}",
+						"competenciasParticipadas",
+						"{{competencia_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una Invalida Competencia Participada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se ha encontrado la competencia participada con esa id.\"] = responseCode.code === 404; \r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No se ha encontrado la competencia participada con esa id.\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id}}/competenciasParticipadas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id}}",
+						"competenciasParticipadas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remplazar las Competencias Participadas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"Equipo No genera error en el Put (actualizacion) de todas sus competencias participadas\"] = responseCode.code === 200;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": 1,\r\n        \"nombre\": \"G2 vs RRRNetwork FirstTurn\",\r\n        \"duracion\": \"3 hours and 50 minutes\",\r\n        \"equipoGanador\": null,\r\n        \"torneo\": {\r\n            \"id\": 1,\r\n            \"fechaFinalizacion\": \"2019-05-05T00:00:00.000+00:00\",\r\n            \"paisRealizacion\": \"Australia\",\r\n            \"nombreTorneo\": \"KingsTournamentAU\",\r\n            \"imagenRepresentativa\": \"https://staticg.sportskeeda.com/editor/2022/12/8530c-16718343069542-1920.jpg\",\r\n            \"enlacePaginaWeb\": \"https://www.sportskeeda.com/esports/top-10-popular-esports-tournaments-2022\",\r\n            \"organizador\": \"sportsskeeda\",\r\n            \"videojuego\": \"Counter Strike\"\r\n        },\r\n        \"jugador\": null,\r\n        \"mvp\": null\r\n    },\r\n\r\n    {\r\n        \"id\": 2,\r\n        \"nombre\": \"G2 vs RRRNetwork SECONDTurn\",\r\n        \"duracion\": \"1 hours and 50 minutes\",\r\n        \"equipoGanador\": null,\r\n        \"torneo\": {\r\n            \"id\": 1,\r\n            \"fechaFinalizacion\": \"2019-05-05T00:00:00.000+00:00\",\r\n            \"paisRealizacion\": \"Australia\",\r\n            \"nombreTorneo\": \"KingsTournamentAU\",\r\n            \"imagenRepresentativa\": \"https://staticg.sportskeeda.com/editor/2022/12/8530c-16718343069542-1920.jpg\",\r\n            \"enlacePaginaWeb\": \"https://www.sportskeeda.com/esports/top-10-popular-esports-tournaments-2022\",\r\n            \"organizador\": \"sportsskeeda\",\r\n            \"videojuego\": \"Counter Strike\"\r\n        },\r\n        \"jugador\": null,\r\n        \"mvp\": null\r\n    }\r\n\r\n\r\n\r\n\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/competenciasParticipadas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"competenciasParticipadas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remplazar las Competencias Participadas por No Existentes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se ha encontrado una competencia de la nueva lista.\"] = responseCode.code === 404;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No se ha encontrado una competencia de la nueva lista.\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": 1,\r\n        \"nombre\": \"G2 vs RRRNetwork FirstTurn\",\r\n        \"duracion\": \"3 hours and 50 minutes\",\r\n        \"equipoGanador\": null,\r\n        \"torneo\": {\r\n            \"id\": 1,\r\n            \"fechaFinalizacion\": \"2019-05-05T00:00:00.000+00:00\",\r\n            \"paisRealizacion\": \"Australia\",\r\n            \"nombreTorneo\": \"KingsTournamentAU\",\r\n            \"imagenRepresentativa\": \"https://staticg.sportskeeda.com/editor/2022/12/8530c-16718343069542-1920.jpg\",\r\n            \"enlacePaginaWeb\": \"https://www.sportskeeda.com/esports/top-10-popular-esports-tournaments-2022\",\r\n            \"organizador\": \"sportsskeeda\",\r\n            \"videojuego\": \"Counter Strike\"\r\n        },\r\n        \"jugador\": null,\r\n        \"mvp\": null\r\n    },\r\n\r\n    {\r\n        \"id\": 0,\r\n        \"nombre\": \"G2 vs RRRNetwork SECONDTurn\",\r\n        \"duracion\": \"1 hours and 50 minutes\",\r\n        \"equipoGanador\": null,\r\n        \"torneo\": {\r\n            \"id\": 1,\r\n            \"fechaFinalizacion\": \"2019-05-05T00:00:00.000+00:00\",\r\n            \"paisRealizacion\": \"Australia\",\r\n            \"nombreTorneo\": \"KingsTournamentAU\",\r\n            \"imagenRepresentativa\": \"https://staticg.sportskeeda.com/editor/2022/12/8530c-16718343069542-1920.jpg\",\r\n            \"enlacePaginaWeb\": \"https://www.sportskeeda.com/esports/top-10-popular-esports-tournaments-2022\",\r\n            \"organizador\": \"sportsskeeda\",\r\n            \"videojuego\": \"Counter Strike\"\r\n        },\r\n        \"jugador\": null,\r\n        \"mvp\": null\r\n    }\r\n\r\n\r\n\r\n\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/competenciasParticipadas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"competenciasParticipadas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una Competencia Participada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Equipo no genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_2}}/competenciasParticipadas/{{competencia_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_2}}",
+						"competenciasParticipadas",
+						"{{competencia_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una Competencia Participada 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Equipo no genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_2}}/competenciasParticipadas/{{competencia_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_2}}",
+						"competenciasParticipadas",
+						"{{competencia_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una Invalida Competencia Participada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se ha encontrado la competencia participada con ese id.\"] = responseCode.code === 404;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No se ha encontrado la competencia participada con ese id.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_2}}/competenciasParticipadas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_2}}",
+						"competenciasParticipadas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una Invalida Competencia Participada Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se ha encontrado el equipo con ese id.\"] = responseCode.code === 404;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No se ha encontrado el equipo con ese id.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/0/competenciasParticipadas/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"0",
+						"competenciasParticipadas",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,925 @@
+{
+	"info": {
+		"_postman_id": "f5cd73b8-c0ca-49c8-94b1-5c06e4660d7e",
+		"name": "JugadorCompetencia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26189250"
+	},
+	"item": [
+		{
+			"name": "Agregar una competencia a un jugador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Final VCT 2021 SEN vs DRX\",\r\n    \"duracion\": \"5 horas 14 minutos 47 segundos\",\r\n    \"jugador\":{\r\n        \"id\": 1,\r\n        \"nombre\": \"Tyson Ngo\",\r\n        \"nickname\": \"TenZ\",\r\n        \"nacionalidad\": \"Canada\",\r\n        \"fotografia\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fliquipedia.net%2Fvalorant%2FTenZ&psig=AOvVaw3uSnvPVuInmd9AK7BGdcFv&ust=1678154420557000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPic1sKaxv0CFQAAAAAdAAAAABAE\",\r\n        \"fechaNacimiento\": \"5 de Mayo de 2001\"\r\n    } \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias/{{competencia_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"jugadores",
+						"{{jugador_id}}",
+						"competencias",
+						"{{competencia_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar una competencia a un jugador",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"Final VCT 2021 SEN vs DRX\",\r\n    \"duracion\": \"5 horas 14 minutos 47 segundos\",\r\n    \"jugador\":{\r\n        \"nombre\": \"Tyson Ngo\",\r\n        \"nickname\": \"TenZ\",\r\n        \"nacionalidad\": \"Canada\",\r\n        \"fotografia\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fliquipedia.net%2Fvalorant%2FTenZ&psig=AOvVaw3uSnvPVuInmd9AK7BGdcFv&ust=1678154420557000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPic1sKaxv0CFQAAAAAdAAAAABAE\",\r\n        \"fechaNacimiento\": \"5 de Mayo de 2001\"\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias/{{competencia_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"jugadores",
+								"{{jugador_id}}",
+								"competencias",
+								"{{competencia_id_1}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"Final VCT 2021 SEN vs DRX\",\r\n    \"duracion\": \"5 horas 14 minutos 47 segundos\",\r\n    \"jugador\":{\r\n        \"id\": 1,\r\n        \"nombre\": \"Tyson Ngo\",\r\n        \"nickname\": \"TenZ\",\r\n        \"nacionalidad\": \"Canada\",\r\n        \"fotografia\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fliquipedia.net%2Fvalorant%2FTenZ&psig=AOvVaw3uSnvPVuInmd9AK7BGdcFv&ust=1678154420557000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPic1sKaxv0CFQAAAAAdAAAAABAE\",\r\n        \"fechaNacimiento\": \"5 de Mayo de 2001\"\r\n    } \r\n}"
+				}
+			]
+		},
+		{
+			"name": "Agregar una competencia que no existe a un jugador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontro la competencia con el id suminsitrado\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Final VCT 2021 SEN vs DRX\",\r\n    \"duracion\": \"5 horas 14 minutos 47 segundos\",\r\n    \"jugador\":{\r\n        \"id\": 1,\r\n        \"nombre\": \"Tyson Ngo\",\r\n        \"nickname\": \"TenZ\",\r\n        \"nacionalidad\": \"Canada\",\r\n        \"fotografia\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fliquipedia.net%2Fvalorant%2FTenZ&psig=AOvVaw3uSnvPVuInmd9AK7BGdcFv&ust=1678154420557000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPic1sKaxv0CFQAAAAAdAAAAABAE\",\r\n        \"fechaNacimiento\": \"5 de Mayo de 2001\"\r\n    } \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"jugadores",
+						"{{jugador_id}}",
+						"competencias",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar una competencia que no existe a un jugador",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Sentinels\",\r\n    \"paisProcedencia\": \"Estados Unidos\",\r\n    \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg\",\r\n    \"logo\": \"data:image/png;base64,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\",\r\n    \"torneosParticipados\": [],\r\n    \"resultadosEnCompetencias\": [],\r\n    \"competenciasParticipadas\": [],\r\n    \"competenciasGanadas\": [],\r\n    \"integrantes\": [\r\n        {\r\n            \"nombre\": \"Tyson Ngo\",\r\n            \"nickname\": \"TenZ\",\r\n            \"nacionalidad\": \"Canada\",\r\n            \"fotografia\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fliquipedia.net%2Fvalorant%2FTenZ&psig=AOvVaw3uSnvPVuInmd9AK7BGdcFv&ust=1678154420557000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPic1sKaxv0CFQAAAAAdAAAAABAE\",\r\n            \"fechaNacimiento\": \"5 de Mayo de 2001\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"jugadores",
+								"{{jugador_id}}",
+								"competencias",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"21-02-2023 10:15:29\",\r\n        \"message\": \"La competencia con el id dado no fue encontrado\"\r\n    }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Agregar una competencia a un jugador que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontro el jugador con el id suministrado\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Final VCT 2021 SEN vs DRX\",\r\n    \"duracion\": \"5 horas 14 minutos 47 segundos\",\r\n    \"jugador\":{\r\n        \"id\": 1,\r\n        \"nombre\": \"Tyson Ngo\",\r\n        \"nickname\": \"TenZ\",\r\n        \"nacionalidad\": \"Canada\",\r\n        \"fotografia\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fliquipedia.net%2Fvalorant%2FTenZ&psig=AOvVaw3uSnvPVuInmd9AK7BGdcFv&ust=1678154420557000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPic1sKaxv0CFQAAAAAdAAAAABAE\",\r\n        \"fechaNacimiento\": \"5 de Mayo de 2001\"\r\n    } \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/jugadores/0/competencias/{{competencia_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"jugadores",
+						"0",
+						"competencias",
+						"{{competencia_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar una competencia que no existe a un jugador",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Sentinels\",\r\n    \"paisProcedencia\": \"Estados Unidos\",\r\n    \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg\",\r\n    \"logo\": \"data:image/png;base64,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\",\r\n    \"torneosParticipados\": [],\r\n    \"resultadosEnCompetencias\": [],\r\n    \"competenciasParticipadas\": [],\r\n    \"competenciasGanadas\": [],\r\n    \"integrantes\": [\r\n        {\r\n            \"nombre\": \"Tyson Ngo\",\r\n            \"nickname\": \"TenZ\",\r\n            \"nacionalidad\": \"Canada\",\r\n            \"fotografia\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fliquipedia.net%2Fvalorant%2FTenZ&psig=AOvVaw3uSnvPVuInmd9AK7BGdcFv&ust=1678154420557000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPic1sKaxv0CFQAAAAAdAAAAABAE\",\r\n            \"fechaNacimiento\": \"5 de Mayo de 2001\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/jugadores/0/competencias/{{competencia_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"jugadores",
+								"0",
+								"competencias",
+								"{{competencia_id_1}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"21-02-2023 10:15:29\",\r\n        \"message\": \"El jugador con el id dado no fue encontrado\"\r\n    }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una competencia de un jugador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias/{{competencia_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"jugadores",
+						"{{jugador_id}}",
+						"competencias",
+						"{{competencia_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una competencia de un jugador",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias/{{competencia_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"jugadores",
+								"{{jugador_id}}",
+								"competencias",
+								"{{competencia_id_1}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"Final VCT 2021 SEN vs DRX\",\r\n    \"duracion\": \"5 horas 14 minutos 47 segundos\",\r\n    \"jugador\":{\r\n        \"id\": 1,\r\n        \"nombre\": \"Tyson Ngo\",\r\n        \"nickname\": \"TenZ\",\r\n        \"nacionalidad\": \"Canada\",\r\n        \"fotografia\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fliquipedia.net%2Fvalorant%2FTenZ&psig=AOvVaw3uSnvPVuInmd9AK7BGdcFv&ust=1678154420557000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPic1sKaxv0CFQAAAAAdAAAAABAE\",\r\n        \"fechaNacimiento\": \"5 de Mayo de 2001\"\r\n    } \r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una competencia que no existe de un jugador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encotnro la competencia con el id suministrado\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"jugadores",
+						"{{jugador_id}}",
+						"competencias",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una competencia que no existe de un jugador",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Sentinels\",\r\n    \"paisProcedencia\": \"Estados Unidos\",\r\n    \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg\",\r\n    \"logo\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAkFBMVEXOADf////OADXPADr98PTNADPMAC3MACTNADHMACfMACrhe4//+vzMACzLAB7LACDSH0ryw87fa4P98/b65+zpnKzljJ/cYHrrpbTVN1rgc4r54efbV3PTJk7us8Dol6j21d3YSmjwusbREELsqrjaUm/32N/XQmLxwczkhJjWOlzzytPgb4fmjqHheI7ULVSYhWDgAAAHY0lEQVR4nO2daVPjMAyGE7U5adNAC2QpV8uxsLDw///dbjkaJ5EtOyW229HziZmGjhUnlvRKdoOwKiE4VKCswqAqDtfA/yYWVXDAM7gByuCwDQwO3j6GYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGEQEdXA9yByBPt3+P2mw/SfO9tRGSajGmWVTJvpqYnYZ6nGauh9qP9JemgWH4K6W/zkNmx9oWHs9cD7YP8bm2gWF4HrserjkwWxpYuJzt32KTHxkYGIZHuesBmwJ3cyML53f7NonJvZGBYXifuB6yGQae4ps98xjFi7GFL4XrQcuBNP6gnoT00tjAMLwU/v/rC/14N6MEHk7+83pRDzEzfQs33G9jt/Ty4nXzlQ+QRG6MEpmW6+8hnm8tzG96WHizdRjpNlhYl1M3ZtVMH7ZeQXiRYDQxNnAyqp/J+jWePzg2MbqqTREXw+zM2MIzIcEQluLJldsHVVgzK9GhQW4Ss21YNvLgpNp+4HaNjes1c3zXuNdGcfeGZuwdjcbbTy4dRuXiTLUCS0jMPOJLK88XwtqlQ5Uje66H0d5OHJVGFpatiAaK+uY9O5MAIiG67j5KwqtEU3WiUuEFmN+5WmxmtV9HknQY6WcX81H3QRQkgntHEkD6Xg8RWw3yN20L35DsUJjE8N1JVA6ZsJa8I88RTB81DXycImtJJNzAl8zFYtPwB7+xmxyvNC1cYf4g/S1c4ULHgXghjOAUzV+LddsWlDXq0xNRbV3E9icx+ysOclJiy50Y08nB47KobPzvX+seIwqag7/G50Enx7jB5/+6eRsC2x4juW6NE30TIV2EFAs0z228hR+30LKO0xlAeIvGVtMT0sITLD2C/LZ9HXoLBwNmnQGEr6jiWXQvbN0Z9PHOX7sXWhWNp90BhGP0GJHuZOtMDQTj7pWvFnNhyJEBSDxG54Vtgr9eCVaXG1vMMZqeYgsaIMOdymNMUKk7ukMvtucxZG7uCZ0PIcXqgidGyRN+O6wJGoksVEGzcUjkHmOB1rdjmdq6tuQx0pVswEs0QFYIGmi4CZlU41nZ8RiFPGV4Rj2GtBiMl35z+WP9aEWVyi+kAwgnEeoxZGUatBgDkWJpurBQZgTAPMU3XTVig0TQMLr4k7GF/iKiheQPOi1TbFomaEaU/lF+//CNKeop7KqCn6Alb7SwTamQw0+ifCH9Al8eEQkcl0FJJXnw5TSmkgWJi3voXPhg6jw/ORlaz0hJtf4MfVOydpSwxi8jKzrnQ88hXFFDwENNgPVEZI2+T+og9oOrwRdTuh5xjfpxSLK8JsPbEWfqRCTcrGTDmhdoLDXSxYDumu3/3T8KkfCFsrRdA1IQsKPWQEC+K7igQYJIFy0mdo4jleS/AoteA4GAFOYs5cBNtRsFl0AJaHHVmvJNV7D7ZOMaArm16kWj6oTzZL7YFLh0IWCxAiVWDiWg5SQVGoUqm1XEGVnBXmIlQQUwJdtTKpuV4IjujzVs+qVbii1X85US4QdjpDQvB0bqtDO03pEBOVnBNmr6pVuKH2131SAJXxuDhUFj6ULTyUEpyP0ix9rbmSChv8x+d9tPOuhhQoidQetDDZaaQRbEpKfA61oDg9b4muCCRgdausBrk4OTkxXsyUjn2YrohuITRztqfihhHTCl3hUN0QGVwFvfoha5N1gqOSHQwtEt6TEgoZ8Ed7sTW31LGGR7Adb00ATvt7IELWiMiUmEhFyR7Td8ieOb0YKGenwZLV243XxJljGIaEQjMhq8UKFGoyV/rVonZmR/Jl6us4jGRkNFVqCRobjflpiRgsaj9HfPQNH08EXl/jACZWPBJ2+yyCYhe93x1gfLaGzaPinyadxmmhd0a6YXW7x1NnG9nB11OaP3DbncECQgbdLaHZebukQkjXa7g7cCOsBwE5c+LgPSJrSg0Qsn0gUORGT43IOxD57iG1U3X29sdOlpg2we2Bl8e4MzNKQIUzQEEKvQgoYhDqULHA1Bwwin0gVOjzMGVGiKyTaBiN7Epc/CJ0/xjfEZAyr8PPurx6k7Mjw9jecHPYZvnuIb49OvZHh7KlZkcMaAirlWycoJit0uJuA7b7zA7CRBGV6fMPgjgoYv0gXODwga3kgXOBqNMRRuTvnQZ2dBwyPpAgfi3TzG3MEBGIYYnlvaxguRWw0kuqfSYDy6rqXpoH0qDYZxa7ETpFu9aWxt1t4RGPW20Kjr1iF094EEoqvBH/oKGl5KFzgap9JgoCfV+AlkfSTwWydHlvWkl6Dhq3SBU5hL4PhZWt4CpWl4Oi/36BndYCyBeyhyq9HoTm+g2/XuEYYSuJ8itxojCdxTkVuN0Y8HuO/P64PBMbv4STXeo7FJ8Qt3BwXviPYxu9ghu3sBaP4e0rHPIrcaiHWCt+v9c4U1MFut1T+9tliv9ncGP0iztPOreSL/P3c9xJ053B8/ZBiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYZgeHHrrHAT7thnHECiDSnoG7iEARRWE1QHPIpRV+A8ZLGp2JslGOgAAAABJRU5ErkJggg==\",\r\n    \"torneosParticipados\": [],\r\n    \"resultadosEnCompetencias\": [],\r\n    \"competenciasParticipadas\": [],\r\n    \"competenciasGanadas\": [],\r\n    \"integrantes\": [\r\n        {\r\n            \"nombre\": \"Tyson Ngo\",\r\n            \"nickname\": \"TenZ\",\r\n            \"nacionalidad\": \"Canada\",\r\n            \"fotografia\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fliquipedia.net%2Fvalorant%2FTenZ&psig=AOvVaw3uSnvPVuInmd9AK7BGdcFv&ust=1678154420557000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPic1sKaxv0CFQAAAAAdAAAAABAE\",\r\n            \"fechaNacimiento\": \"5 de Mayo de 2001\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"jugadores",
+								"{{jugador_id}}",
+								"competencias",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"21-02-2023 10:15:29\",\r\n        \"message\": \"La competencia con el id dado no fue encontrado\"\r\n    }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una competencia de un jugador que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"La competencia no esta asociada al jugador\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/jugadores/0/competencias/{{competencia_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"jugadores",
+						"0",
+						"competencias",
+						"{{competencia_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una competencia de un jugador que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Sentinels\",\r\n    \"paisProcedencia\": \"Estados Unidos\",\r\n    \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg\",\r\n    \"logo\": \"data:image/png;base64,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\",\r\n    \"torneosParticipados\": [],\r\n    \"resultadosEnCompetencias\": [],\r\n    \"competenciasParticipadas\": [],\r\n    \"competenciasGanadas\": [],\r\n    \"integrantes\": [\r\n        {\r\n            \"nombre\": \"Tyson Ngo\",\r\n            \"nickname\": \"TenZ\",\r\n            \"nacionalidad\": \"Canada\",\r\n            \"fotografia\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fliquipedia.net%2Fvalorant%2FTenZ&psig=AOvVaw3uSnvPVuInmd9AK7BGdcFv&ust=1678154420557000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPic1sKaxv0CFQAAAAAdAAAAABAE\",\r\n            \"fechaNacimiento\": \"5 de Mayo de 2001\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/jugadores/0/competencias/{{competencia_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"jugadores",
+								"0",
+								"competencias",
+								"{{competencia_id_1}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"21-02-2023 10:15:29\",\r\n        \"message\": \"La competencia con el id dado no fue encontrada\"\r\n    }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una competencia que no esta asociada a un jugador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"La competencia no esta asociada al jugador\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias/{{competencias_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"jugadores",
+						"{{jugador_id}}",
+						"competencias",
+						"{{competencias_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una competencia que no esta asociado a un jugador",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Sentinels\",\r\n    \"paisProcedencia\": \"Estados Unidos\",\r\n    \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg\",\r\n    \"logo\": \"data:image/png;base64,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\",\r\n    \"torneosParticipados\": [],\r\n    \"resultadosEnCompetencias\": [],\r\n    \"competenciasParticipadas\": [],\r\n    \"competenciasGanadas\": [],\r\n    \"integrantes\": [\r\n        {\r\n            \"nombre\": \"Tyson Ngo\",\r\n            \"nickname\": \"TenZ\",\r\n            \"nacionalidad\": \"Canada\",\r\n            \"fotografia\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fliquipedia.net%2Fvalorant%2FTenZ&psig=AOvVaw3uSnvPVuInmd9AK7BGdcFv&ust=1678154420557000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPic1sKaxv0CFQAAAAAdAAAAABAE\",\r\n            \"fechaNacimiento\": \"5 de Mayo de 2001\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias/{{competencias_id_2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"jugadores",
+								"{{jugador_id}}",
+								"competencias",
+								"{{competencias_id_2}}"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"21-02-2023 10:15:29\",\r\n        \"message\": \"La competencia no esta asociado al jugador\"\r\n    }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener las competencias de un jugador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of books > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"jugadores",
+						"{{jugador_id}}",
+						"competencias"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener las competencias de un jugador",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"añoRealizacion\": 2022,\r\n        \"paisRealizacion\": \"Turquia\",\r\n        \"nombreTorneo\": \"Valorant Champions 2022 (VCT)\",\r\n        \"imagenRepresentativa\": \"https://www.gamerfocus.co/wp-content/uploads/2022/08/valorant-champions-2022-estambul.jpg\",\r\n        \"enlacePaginaWeb\": \"https://playvalorant.com/es-mx/news/tags/valorant-champions-tour/\",\r\n        \"organizador\": \"Riot Games\",\r\n        \"videojuego\": \"Valorant\",\r\n        \"equiposParticipantes\": [],\r\n        \"competencias\": [],\r\n        \"participantes\": [\r\n            {\r\n                \"nombre\": \"Tyson Ngo\",\r\n                \"nickname\": \"TenZ\",\r\n                \"nacionalidad\": \"Canada\",\r\n                \"fotografia\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fliquipedia.net%2Fvalorant%2FTenZ&psig=AOvVaw3uSnvPVuInmd9AK7BGdcFv&ust=1678154420557000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPic1sKaxv0CFQAAAAAdAAAAABAE\",\r\n                \"fechaNacimiento\": \"5 de Mayo de 2001\"\r\n            }\r\n        ]\r\n    } \r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"jugadores",
+								"{{jugador_id}}",
+								"competencias"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\r\n    {\r\n        \"id\": 1,\r\n        \"nombre\": \"Final VCT 2021 SEN vs DRX\",\r\n        \"duracion\": \"5 horas 14 minutos 47 segundos\",\r\n        \"jugador\":{\r\n            \"id\": 1,\r\n            \"nombre\": \"Tyson Ngo\",\r\n            \"nickname\": \"TenZ\",\r\n            \"nacionalidad\": \"Canada\",\r\n            \"fotografia\": \"https://www.google.com/url?sa=i&url=https%3A%2F%2Fliquipedia.net%2Fvalorant%2FTenZ&psig=AOvVaw3uSnvPVuInmd9AK7BGdcFv&ust=1678154420557000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPic1sKaxv0CFQAAAAAdAAAAABAE\",\r\n            \"fechaNacimiento\": \"5 de Mayo de 2001\"\r\n        } \r\n    }\r\n]"
+				}
+			]
+		},
+		{
+			"name": "Asociar competencias a un jugador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": {{new_id_t}},\r\n        \"nombre\": \"Final VCT 2021 SEN vs DRX\",\r\n        \"duracion\": \"5 horas 14 minutos 47 segundos\"\r\n    },\r\n    {\r\n        \"id\": {{new_id_t2}},\r\n        \"nombre\": \"SemiFinal VCT 2021 SEN vs FNC\",\r\n        \"duracion\": \"3 horas 54 minutos 7 segundos\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"jugadores",
+						"{{jugador_id}}",
+						"competencias"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar competencias a un jugador",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": {{new_id_t}},\r\n        \"añoRealizacion\": 2022,\r\n        \"paisRealizacion\": \"Turquia\",\r\n        \"nombreTorneo\": \"Valorant Champions 2022 (VCT)\",\r\n        \"imagenRepresentativa\": \"https://www.gamerfocus.co/wp-content/uploads/2022/08/valorant-champions-2022-estambul.jpg\",\r\n        \"enlacePaginaWeb\": \"https://playvalorant.com/es-mx/news/tags/valorant-champions-tour/\",\r\n        \"organizador\": \"Riot Games\",\r\n        \"videojuego\": \"Valorant\",\r\n        \"equiposParticipantes\": [],\r\n        \"competencias\": []\r\n    },\r\n    {\r\n        \"id\": {{new_id_t2}},\r\n        \"añoRealizacion\": 2023,\r\n        \"paisRealizacion\": \"Brazil\",\r\n        \"nombreTorneo\": \"Valorant Champions 2023 (VCT)\",\r\n        \"imagenRepresentativa\": \"https://www.gamerfocus.co/wp-content/uploads/2022/08/valorant-champions-2022-estambul.jpg\",\r\n        \"enlacePaginaWeb\": \"https://playvalorant.com/es-mx/news/tags/valorant-champions-tour/\",\r\n        \"organizador\": \"Riot Games\",\r\n        \"videojuego\": \"Valorant\",\r\n        \"equiposParticipantes\": [],\r\n        \"competencias\": []\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"jugadores",
+								"{{jugador_id}}",
+								"competencias"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\r\n    {\r\n        \"id\": 1,\r\n        \"nombre\": \"Final VCT 2021 SEN vs DRX\",\r\n        \"duracion\": \"5 horas 14 minutos 47 segundos\"\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"nombre\": \"SemiFinal VCT 2021 SEN vs FNC\",\r\n        \"duracion\": \"3 horas 54 minutos 7 segundos\"\r\n    }\r\n]"
+				}
+			]
+		},
+		{
+			"name": "Asociar competencias a un jugador que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontro el jugador con el id suministrado.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": {{new_id_t}},\r\n        \"nombre\": \"Final VCT 2021 SEN vs DRX\",\r\n        \"duracion\": \"5 horas 14 minutos 47 segundos\"\r\n    },\r\n    {\r\n        \"id\": {{new_id_t2}},\r\n        \"nombre\": \"SemiFinal VCT 2021 SEN vs FNC\",\r\n        \"duracion\": \"3 horas 54 minutos 7 segundos\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/jugadores/0/competencias",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"jugadores",
+						"0",
+						"competencias"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar competencias a un jugador que no existe",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": {{new_id_t}},\r\n        \"añoRealizacion\": 2022,\r\n        \"paisRealizacion\": \"Turquia\",\r\n        \"nombreTorneo\": \"Valorant Champions 2022 (VCT)\",\r\n        \"imagenRepresentativa\": \"https://www.gamerfocus.co/wp-content/uploads/2022/08/valorant-champions-2022-estambul.jpg\",\r\n        \"enlacePaginaWeb\": \"https://playvalorant.com/es-mx/news/tags/valorant-champions-tour/\",\r\n        \"organizador\": \"Riot Games\",\r\n        \"videojuego\": \"Valorant\",\r\n        \"equiposParticipantes\": [],\r\n        \"competencias\": []\r\n    },\r\n    {\r\n        \"id\": {{new_id_t2}},\r\n        \"añoRealizacion\": 2023,\r\n        \"paisRealizacion\": \"Brazil\",\r\n        \"nombreTorneo\": \"Valorant Champions 2023 (VCT)\",\r\n        \"imagenRepresentativa\": \"https://www.gamerfocus.co/wp-content/uploads/2022/08/valorant-champions-2022-estambul.jpg\",\r\n        \"enlacePaginaWeb\": \"https://playvalorant.com/es-mx/news/tags/valorant-champions-tour/\",\r\n        \"organizador\": \"Riot Games\",\r\n        \"videojuego\": \"Valorant\",\r\n        \"equiposParticipantes\": [],\r\n        \"competencias\": []\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/jugadores/0/competencias",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"jugadores",
+								"0",
+								"competencias"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"21-02-2023 10:15:29\",\r\n        \"message\": \"No se encontro el jugador con el id suministrado\"\r\n    }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Asociar una competencia que no existe a un jugador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"No se encontro la competencia\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Final VCT 2021 SEN vs DRX\",\r\n    \"duracion\": \"5 horas 14 minutos 47 segundos\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"jugadores",
+						"{{jugador_id}}",
+						"competencias",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar competencia que no existe a un jugador",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": {{new_id_t}},\r\n        \"añoRealizacion\": 2022,\r\n        \"paisRealizacion\": \"Turquia\",\r\n        \"nombreTorneo\": \"Valorant Champions 2022 (VCT)\",\r\n        \"imagenRepresentativa\": \"https://www.gamerfocus.co/wp-content/uploads/2022/08/valorant-champions-2022-estambul.jpg\",\r\n        \"enlacePaginaWeb\": \"https://playvalorant.com/es-mx/news/tags/valorant-champions-tour/\",\r\n        \"organizador\": \"Riot Games\",\r\n        \"videojuego\": \"Valorant\",\r\n        \"equiposParticipantes\": [],\r\n        \"competencias\": []\r\n    },\r\n    {\r\n        \"id\": {{new_id_t2}},\r\n        \"añoRealizacion\": 2023,\r\n        \"paisRealizacion\": \"Brazil\",\r\n        \"nombreTorneo\": \"Valorant Champions 2023 (VCT)\",\r\n        \"imagenRepresentativa\": \"https://www.gamerfocus.co/wp-content/uploads/2022/08/valorant-champions-2022-estambul.jpg\",\r\n        \"enlacePaginaWeb\": \"https://playvalorant.com/es-mx/news/tags/valorant-champions-tour/\",\r\n        \"organizador\": \"Riot Games\",\r\n        \"videojuego\": \"Valorant\",\r\n        \"equiposParticipantes\": [],\r\n        \"competencias\": []\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/jugadores/{{jugador_id}}/competencias/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"jugadores",
+								"{{jugador_id}}",
+								"competencias",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"apierror\": {\r\n        \"status\": \"NOT_FOUND\",\r\n        \"timestamp\": \"21-02-2023 10:15:29\",\r\n        \"message\": \"No se encontro la competencia con el id suministrado\"\r\n    }\r\n}"
+				}
+			]
+		}
+	]
+}

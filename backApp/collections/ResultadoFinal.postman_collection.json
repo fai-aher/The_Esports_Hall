@@ -1,0 +1,499 @@
+{
+	"info": {
+		"_postman_id": "5a9afecf-cb14-4d08-ab09-da0a227ddfdf",
+		"name": "ResultadoFinal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25627050"
+	},
+	"item": [
+		{
+			"name": "Crear un Resultado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"resultado_id_1\", data.id);\r",
+							"tests[\"Resultado no genera error en el Post\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"posicionFinal\": 1,\r\n    \"parteDeEmpate\": false,\r\n    \"competenciaRelacionada\":{\r\n        \"id\":{{competencia_id_1}},\r\n        \"nombre\": \"G2 vs RRRNetwork FirstTurn\",\r\n        \"duracion\": \"3 hours and 50 minutes\",\r\n        \"torneo\": {\"id\":{{torneo_id_1}}}\r\n        },\r\n    \"equipoInvolucrado\": {\r\n        \"id\":{{equipo_id_1}},\r\n        \"nombre\": \"RRRNetworkGaming\",\r\n        \"paisProcedencia\": \"Colombia\",\r\n        \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg\",\r\n        \"logo\": \"https://variety.com/wp-content/uploads/2022/06/Puss-in-Boots-The-Last-Wish.jpg?w=681&h=383&crop=1\"\r\n        }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resultados",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un Resultado 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"resultado_id_2\", data.id);\r",
+							"tests[\"Resultado no genera error en el Post\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"posicionFinal\": 5,\r\n    \"parteDeEmpate\": true,\r\n    \"competenciaRelacionada\":{\r\n        \"id\":{{competencia_id_1}},\r\n        \"nombre\": \"G2 vs RRRNetwork FirstTurn\",\r\n        \"duracion\": \"3 hours and 50 minutes\",\r\n        \"torneo\": {\"id\":{{torneo_id_1}}}\r\n        },\r\n    \"equipoInvolucrado\": {\r\n        \"id\":{{equipo_id_1}},\r\n        \"nombre\": \"RRRNetworkGaming\",\r\n        \"paisProcedencia\": \"Colombia\",\r\n        \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg\",\r\n        \"logo\": \"https://variety.com/wp-content/uploads/2022/06/Puss-in-Boots-The-Last-Wish.jpg?w=681&h=383&crop=1\"\r\n        }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resultados",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un Resultado sin Posicion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No es posible crear un resultado final sin la posicion final que alcanzo el equipo en esa competencia.\"] = responseCode.code === 412;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No es posible crear un resultado final sin la posicion final que alcanzo el equipo en esa competencia.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"posicionFinal\": null,\r\n    \"parteDeEmpate\": false,\r\n    \"competenciaRelacionada\":{\r\n        \"id\":{{competencia_id_1}},\r\n        \"nombre\": \"G2 vs RRRNetwork FirstTurn\",\r\n        \"duracion\": \"3 hours and 50 minutes\",\r\n        \"torneo\": {\"id\":{{torneo_id_1}}}\r\n        },\r\n    \"equipoInvolucrado\": {\r\n        \"id\":{{equipo_id_1}},\r\n        \"nombre\": \"RRRNetworkGaming\",\r\n        \"paisProcedencia\": \"Colombia\",\r\n        \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg\",\r\n        \"logo\": \"https://variety.com/wp-content/uploads/2022/06/Puss-in-Boots-The-Last-Wish.jpg?w=681&h=383&crop=1\"\r\n        }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resultados",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un Resultado sin Parte Empate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Debe especificarse si el equipo hizo parte de un empate en esa competencia o no.\"] = responseCode.code === 412;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"Debe especificarse si el equipo hizo parte de un empate en esa competencia o no.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"posicionFinal\": 1,\r\n    \"parteDeEmpate\": null,\r\n    \"competenciaRelacionada\":{\r\n        \"id\":{{competencia_id_1}},\r\n        \"nombre\": \"G2 vs RRRNetwork FirstTurn\",\r\n        \"duracion\": \"3 hours and 50 minutes\",\r\n        \"torneo\": {\"id\":{{torneo_id_1}}}\r\n        },\r\n    \"equipoInvolucrado\": {\r\n        \"id\":{{equipo_id_1}},\r\n        \"nombre\": \"RRRNetworkGaming\",\r\n        \"paisProcedencia\": \"Colombia\",\r\n        \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg\",\r\n        \"logo\": \"https://variety.com/wp-content/uploads/2022/06/Puss-in-Boots-The-Last-Wish.jpg?w=681&h=383&crop=1\"\r\n        }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resultados",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un Resultado sin Competencia",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Es necesario que el resultado final este vinculado a una competencia.\"] = responseCode.code === 412;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"Es necesario que el resultado final este vinculado a una competencia.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"posicionFinal\": 1,\r\n    \"parteDeEmpate\": false,\r\n    \"competenciaRelacionada\": null,\r\n    \"equipoInvolucrado\": {\r\n        \"id\":{{equipo_id_1}},\r\n        \"nombre\": \"RRRNetworkGaming\",\r\n        \"paisProcedencia\": \"Colombia\",\r\n        \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg\",\r\n        \"logo\": \"https://variety.com/wp-content/uploads/2022/06/Puss-in-Boots-The-Last-Wish.jpg?w=681&h=383&crop=1\"\r\n        }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resultados",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un Resultado sin Equipo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Es necesario que el resultado final este vinculado a un equipo.\"] = responseCode.code === 412;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"Es necesario que el resultado final este vinculado a un equipo.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"posicionFinal\": 1,\r\n    \"parteDeEmpate\": false,\r\n    \"competenciaRelacionada\":{\r\n        \"id\":{{competencia_id_1}},\r\n        \"nombre\": \"G2 vs RRRNetwork FirstTurn\",\r\n        \"duracion\": \"3 hours and 50 minutes\",\r\n        \"torneo\": {\"id\":{{torneo_id_1}}}\r\n        },\r\n    \"equipoInvolucrado\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resultados",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Todos los Resultados",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data= JSON.parse(responseBody);\r",
+							"tests[\"Resultados No genera error en el Get all\"] = responseCode.code === 200;\r",
+							"tests[\"Conteo aprobado\"] = data.length >= 0;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/resultados",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un Resultado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"Resultado no genera error en el Get, para uno solo.\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/resultados/{{resultado_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados",
+						"{{resultado_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un Resultado Invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se ha encontrado un resultado final con el ID suministrado.\"] = responseCode.code === 404; \r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No se ha encontrado un resultado final con el ID suministrado.\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/resultados/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Resultado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"Resultado No genera error en el Put (actualizacion)\"] = responseCode.code === 200;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"posicionFinal\": 5,\r\n    \"parteDeEmpate\": true,\r\n    \"competenciaRelacionada\":{\r\n        \"id\":{{competencia_id_1}},\r\n        \"nombre\": \"G2 vs RRRNetwork FirstTurn\",\r\n        \"duracion\": \"3 hours and 50 minutes\",\r\n        \"torneo\": {\"id\":{{torneo_id_1}}}\r\n        },\r\n    \"equipoInvolucrado\": {\r\n        \"id\":{{equipo_id_1}},\r\n        \"nombre\": \"RRRNetworkGaming\",\r\n        \"paisProcedencia\": \"Colombia\",\r\n        \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg\",\r\n        \"logo\": \"https://variety.com/wp-content/uploads/2022/06/Puss-in-Boots-The-Last-Wish.jpg?w=681&h=383&crop=1\"\r\n        }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resultados/{{resultado_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados",
+						"{{resultado_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Resultado Invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se encontro un resultado final con ese Identificador.\"] = responseCode.code === 404;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No se encontro un resultado final con ese Identificador.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"posicionFinal\": 1,\r\n    \"parteDeEmpate\": false,\r\n    \"competenciaRelacionada\":{\r\n        \"id\":{{competencia_id_1}},\r\n        \"nombre\": \"G2 vs RRRNetwork FirstTurn\",\r\n        \"duracion\": \"3 hours and 50 minutes\",\r\n        \"torneo\": {\"id\":{{torneo_id_1}}}\r\n        },\r\n    \"equipoInvolucrado\": {\r\n        \"id\":{{equipo_id_1}},\r\n        \"nombre\": \"RRRNetworkGaming\",\r\n        \"paisProcedencia\": \"Colombia\",\r\n        \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg\",\r\n        \"logo\": \"https://variety.com/wp-content/uploads/2022/06/Puss-in-Boots-The-Last-Wish.jpg?w=681&h=383&crop=1\"\r\n        }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resultados/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un Resultado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Resultado no genera error en el Delete luego de borrar su competencia y equipo Relacioandos primero\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/resultados/{{resultado_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados",
+						"{{resultado_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un Resultado Invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se encontro un resultado final con el Identificador proporcionado.\"] = responseCode.code === 404;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No se encontro un resultado final con el Identificador proporcionado.\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/resultados/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api",
+			"type": "string"
+		}
+	]
+}

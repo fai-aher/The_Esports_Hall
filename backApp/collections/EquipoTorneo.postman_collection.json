@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "cad13469-bb81-420a-8a07-596ffbdcb70d",
+		"name": "EquipoTorneo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25627050"
+	},
+	"item": [
+		{
+			"name": "Agregar un Torneo Participado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"torneo_id_2\", data.id);\r",
+							"tests[\"Agregar torneo a Equipo (Post) no genera error.\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fechaRealizacion\":\"23-07-2012\",\r\n    \"paisRealizacion\":\"United States\",\r\n    \"nombreTorneo\":\"Brawl Starts Pros\",\r\n    \"imagenRepresentativa\":\"https://supercell.com/_next/static/media/hero_bg_brawlstars.6c318ead.webp\",\r\n    \"enlacePaginaWeb\":\"https://supercell.com/en/games/brawlstars/\",\r\n    \"organizador\":\"SUPERCELL\",\r\n    \"videojuego\":\"Brawl Stars\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/torneosParticipados/{{torneo_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"torneosParticipados",
+						"{{torneo_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar otro Torneo Participado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"torneo_id_3\", data.id);\r",
+							"tests[\"Agregar torneo a Equipo (Post) no genera error.\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fechaRealizacion\":\"23-07-2012\",\r\n    \"paisRealizacion\":\"United States\",\r\n    \"nombreTorneo\":\"Brawl Starts Pros\",\r\n    \"imagenRepresentativa\":\"https://supercell.com/_next/static/media/hero_bg_brawlstars.6c318ead.webp\",\r\n    \"enlacePaginaWeb\":\"https://supercell.com/en/games/brawlstars/\",\r\n    \"organizador\":\"SUPERCELL\",\r\n    \"videojuego\":\"Brawl Stars\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/torneosParticipados/{{torneo_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"torneosParticipados",
+						"{{torneo_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar un Invalido Torneo Participado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se ha encontrado el torneo con el id pasado por parametro.\"] = responseCode.code === 404;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No se ha encontrado el torneo con el id pasado por parametro.\");\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fechaRealizacion\":\"23-07-2012\",\r\n    \"paisRealizacion\":\"United States\",\r\n    \"nombreTorneo\":\"Brawl Starts Pros\",\r\n    \"imagenRepresentativa\":\"https://supercell.com/_next/static/media/hero_bg_brawlstars.6c318ead.webp\",\r\n    \"enlacePaginaWeb\":\"https://supercell.com/en/games/brawlstars/\",\r\n    \"organizador\":\"SUPERCELL\",\r\n    \"videojuego\":\"Brawl Stars\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/torneosParticipados/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"torneosParticipados",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener los Torneos Participados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/torneosParticipados",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"torneosParticipados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un Invalido Torneos Participado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se ha encontrado el torneo participado con ese id.\"] = responseCode.code === 404; \r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No se ha encontrado el torneo participado con ese id.\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/torneosParticipados/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"torneosParticipados",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un Torneos Participado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"Un Torneo Participado no genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/torneosParticipados/{{torneo_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"torneosParticipados",
+						"{{torneo_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reemplazar los Torneos Participados",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"Remplazar todos los torneos participados de un equipo no da error.\"] = responseCode.code === 200;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n    \"id\": {{torneo_id_2}},\r\n    \"fechaFinalizacion\":\"2022-08-23\",\r\n    \"paisRealizacion\":\"United States\",\r\n    \"nombreTorneo\":\"AllStars America\",\r\n    \"imagenRepresentativa\":\"https://i.ytimg.com/vi/9iq5iHYMfcs/maxresdefault.jpg\",\r\n    \"enlacePaginaWeb\":\"https://kingsleague.pro/\",\r\n    \"organizador\":\"Gerard Pique\",\r\n    \"videojuego\":\"League of Legends\"\r\n},\r\n{\r\n    \"id\": {{torneo_id_1}},\r\n    \"fechaFinalizacion\":\"2012-07-23\",\r\n    \"paisRealizacion\":\"United States\",\r\n    \"nombreTorneo\":\"Brawl Starts Pros\",\r\n    \"imagenRepresentativa\":\"https://supercell.com/_next/static/media/hero_bg_brawlstars.6c318ead.webp\",\r\n    \"enlacePaginaWeb\":\"https://supercell.com/en/games/brawlstars/\",\r\n    \"organizador\":\"SUPERCELL\",\r\n    \"videojuego\":\"Brawl Stars\"\r\n\r\n}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/torneosParticipados",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"torneosParticipados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remover un Torneo Participado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Equipo no genera error en el Delete de un torneo\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/torneosParticipados/{{torneo_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"torneosParticipados",
+						"{{torneo_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remover un Invalido Torneo Participado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se ha encontrado el torneo participado con ese id.\"] = responseCode.code === 404;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No se ha encontrado el torneo participado con ese id.\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/torneosParticipados/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"torneosParticipados",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

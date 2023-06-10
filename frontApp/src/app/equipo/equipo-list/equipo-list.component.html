@@ -1,0 +1,34 @@
+<div *ngIf="selected">
+  <app-equipo-detail [equipoDetail]="selectedEquipo"></app-equipo-detail>
+</div>
+<hr>
+<h2 class="listTitle">Lista de Equipos</h2>
+<p class="indication">Haz click sobre uno de los logos de los equipos para ver su detalle en esta página o presiona el nombre para revisarlo por aparte.</p>
+<hr>
+
+<hr>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col mb-2" *ngFor="let equipo of equipos">
+          <div class="card p-2" style="width: 15rem; height: 33rem">
+              <img
+                class="card-img-top"
+                src="{{ equipo.logo }}"
+                alt="{{ equipo.nombre }}"
+                (click)="onSelected(equipo)"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a class = "linkToDetail" routerLink="/equipos/{{ equipo.id }}">{{ equipo.nombre }}</a>
+                </h5>
+                  <p class="card-text">
+                     <strong>País de Procedencia: </strong>
+                     {{ equipo.paisProcedencia }}
+                  </p>
+
+              </div>
+           </div>
+      </div>
+   </div>
+</div>

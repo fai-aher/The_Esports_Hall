@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <p class="h3 p-3">{{ equipoDetail.nombre }}</p>
+  <div class="row">
+    <div class="col-3">
+      <div class="thumb">
+        <img
+          class="img-fluid"
+          src="{{ equipoDetail.logo }}"
+          alt="{{ equipoDetail.paisProcedencia }}"
+        />
+      </div>
+    </div>
+    <div class="col">
+      <dl class="list">
+        <dt>Pais de Procedencia</dt>
+        <dd>{{ equipoDetail.paisProcedencia }}</dd>
+        <hr />
+        <dt class="bold">Bandera del Pais</dt>
+        <dd>
+          <img
+          class="img-fluid-2"
+          src="{{ equipoDetail.banderaPais }}"
+          alt="{{ equipoDetail.paisProcedencia }}"
+          />
+        </dd>
+        <hr>
+        <dt>Integrantes del Equipo</dt>
+        <ul>
+          <li *ngFor="let integrante of equipoDetail.integrantes">
+            <a class="clickers" routerLink="/jugadores/{{ integrante.id }}">{{ integrante.nombre }}</a> (Nickname: {{ integrante.nickname }})
+            <img class="playerImage" src="{{ integrante.fotografia }}" alt="{{ integrante.nickname }}">
+          </li>
+        </ul>
+        <hr />
+        <dt>Torneos Participados</dt>
+        <ul>
+          <li *ngFor="let torneo of equipoDetail.torneosParticipados">
+            <a class="clickers" routerLink="/torneos/{{torneo.id}}">{{ torneo.nombreTorneo }}</a>
+          </li>
+        </ul>
+        <hr />
+        <dt>Competencias Participadas</dt>
+        <ul>
+          <li *ngFor="let competencia of equipoDetail.competenciasParticipadas">
+            <a class="clickers" routerLink="/competencias/{{ competencia.id }}">{{ competencia.nombre }}</a>
+          </li>
+        </ul>
+        <hr />
+        <dt>Competencias Ganadas</dt>
+        <ul>
+          <li *ngFor="let competencia of equipoDetail.competenciasGanadas">
+            <a class="clickers" routerLink="/competencias/{{ competencia.id }}">{{ competencia.nombre }}</a>
+          </li>
+        </ul>
+        <hr />
+        <dt>Resultados en Competencias</dt>
+        <ul>
+          <li *ngFor="let resultadoFinal of equipoDetail.resultadosEnCompetencias">
+            En la Competencia con número de identificación <a class="clickers" routerLink="/competencias/{{ resultadoFinal.competenciaRelacionada.id }}">{{ resultadoFinal.competenciaRelacionada.id }}</a>, alcanzó la posición final: {{ resultadoFinal.posicionFinal }}.
+          </li>
+        </ul>
+      </dl>
+    </div>
+  </div>
+ </div>

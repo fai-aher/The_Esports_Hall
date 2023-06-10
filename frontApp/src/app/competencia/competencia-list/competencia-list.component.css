@@ -1,0 +1,13 @@
+img {
+  height: 350px;
+  width: auto;
+  max-width: 400px;
+}
+
+.selected-competencia {
+  background: #417FA6;
+}
+
+.card {
+  background: #417FA6;
+}

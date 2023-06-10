@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "af227569-c1cf-44af-9430-387bd5268695",
+		"name": "EquipoJugador",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25627050"
+	},
+	"item": [
+		{
+			"name": "Obtener los Jugadores",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"Get todos los jugadores no genera error.\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/jugadores",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"jugadores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un Jugador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"Get un jugador no genera error.\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/jugadores/{{jugador_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"jugadores",
+						"{{jugador_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un Invalido Jugador",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"No se ha encontrado el jugador integrante con esa id.\"] = responseCode.code === 404;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/equipos/{{equipo_id_1}}/jugadores/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"equipos",
+						"{{equipo_id_1}}",
+						"jugadores",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

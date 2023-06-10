@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <p class="h3 p-3">{{ torneoDetail.nombreTorneo }}</p>
+  <div class="row">
+    <div class="col-3">
+      <div class="thumb">
+        <img
+          class="img-fluid"
+          src="{{ torneoDetail.imagenRepresentativa }}"
+          alt="{{ torneoDetail.nombreTorneo }}"
+        />
+      </div>
+    </div>
+    <div class="col">
+      <dl class="list">
+        <dt>Videojuego:</dt>
+        <dd>{{ torneoDetail.videojuego }}</dd>
+        <dt>Organizador:</dt>
+        <dd>{{ torneoDetail.organizador }}</dd>
+        <dt>Fecha de finalización:</dt>
+        <dd>{{ torneoDetail.fechaFinalizacion | date:'dd-MM-yyyy' }}</dd>
+        <dt>Pais de realización:</dt>
+        <dd>{{ torneoDetail.paisRealizacion }}</dd>
+        <hr />
+        <dt>Equipos participantes:</dt>
+        <ul>
+          <li *ngFor="let equipo of torneoDetail.equiposParticipantes">
+            <a class="clickers" routerLink="/equipos/{{ equipo.id }}">{{ equipo.nombre }}</a>
+          </li>
+        </ul>
+        <hr />
+        <dt>Competencias realizadas:</dt>
+        <ul>
+          <li *ngFor="let competencia of torneoDetail.competencias">
+            <a class="clickers" routerLink="/competencias/{{competencia.id}}">{{ competencia.nombre }}</a>
+          </li>
+        </ul>
+      </dl>
+    </div>
+  </div>
+ </div>

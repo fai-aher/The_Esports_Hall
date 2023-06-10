@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "2d77ef60-a4b0-475a-a71b-503205537872",
+		"name": "TorneoCompetencia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25545786"
+	},
+	"item": [
+		{
+			"name": "Obtener una competencia de un torneo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/torneos/{{torneo_id}}/competencias/{{competencia_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"torneos",
+						"{{torneo_id}}",
+						"competencias",
+						"{{competencia_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una competencia de un torneo",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/torneos/{{torneo_id_1}}/competencias/{{competencia_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"torneos",
+								"{{torneo_id_1}}",
+								"competencias",
+								"{{competencia_id_1}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"VCT 2022: East Asia Last Chance Qualifier\",\r\n    \"duracion\": \"47:56\",\r\n    \"equiposParticipantes\": [],\r\n    \"competencias\": [],\r\n    \"equipoGanador\":\r\n        {\r\n            \"id\": 1,\r\n            \"nombre\": \"On Sla2ers\",\r\n            \"paisProcedencia\": \"Corea del Sur\",\r\n            \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/200px-Flag_of_South_Korea.svg.png\",\r\n            \"logo\": \"https://liquipedia.net/commons/images/1/1b/On_Sla2ers_full_allmode.png\"\r\n        },\r\n    \"torneo\": \r\n        {\r\n            \"id\": 1,\r\n            \"fechaFinalizacion\": \"2022-03-29\",\r\n            \"paisRealizacion\": \"Canada\",\r\n            \"nombreTorneo\": \"Valorant Champions Tour 2022\",\r\n            \"imagenRepresentativa\": \"https://cdn.oneesports.gg/cdn-data/2021/12/Valorant_VCT2022season.jpg\",\r\n            \"enlacePaginaWeb\": \"https://valorantesports.com/news/champions-tour-2022\",\r\n            \"organizador\": \"Riot Games\",\r\n            \"videojuego\": \"Valorant\"\r\n        },\r\n    \"mvp\": \r\n        {\r\n            \"id\": 1,\r\n            \"nombre\": \"Lee Ji-ho\",\r\n            \"nickname\": \"Blueming\",\r\n            \"nacionalidad\": \"Corea del Sur\",\r\n            \"fotografia\": \"https://liquipedia.net/commons/images/a/a4/PlayerImagePlaceholder.png\",\r\n            \"fechaNacimiento\": \"12-05-2004\",\r\n            \"equipo\":\r\n            {\r\n                \"id\": 1,\r\n                \"nombre\": \"On Sla2ers\",\r\n                \"paisProcedencia\": \"Corea del Sur\",\r\n                \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/200px-Flag_of_South_Korea.svg.png\",\r\n                \"logo\": \"https://liquipedia.net/commons/images/1/1b/On_Sla2ers_full_allmode.png\"\r\n            }\r\n        }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una competencia que no existe de un torneo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"No se ha encontrado la competencia con el id dado\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/torneos/{{torneo_id}}/competencias/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"torneos",
+						"{{torneo_id}}",
+						"competencias",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una competencia que no existe de un torneo",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/torneos/{{torneo_id_1}}/competencias/0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"torneos",
+								"{{torneo_id_1}}",
+								"competencias",
+								"0"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"apierror\": {\n        \"status\": \"NOT_FOUND\",\n        \"timestamp\": \"01-04-2023 08:07:46\",\n        \"message\": \"La competencia con el id dado no fue encontrada\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una competencia que no está asociada a un torneo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.apierror.message).to.eql(\"La competencia no está asociada con el torneo\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/torneos/{{torneo_id}}/competencias/{{competencia_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"torneos",
+						"{{torneo_id}}",
+						"competencias",
+						"{{competencia_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una competencia que no está asociada a un torneo",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/torneos/{{torneo_id_1}}/competencias/{{competencia_id_2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"torneos",
+								"{{torneo_id_1}}",
+								"competencias",
+								"{{competencia_id_2}}"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"apierror\": {\r\n        \"status\": \"PRECONDITION_FAILED\",\r\n        \"timestamp\": \"01-04-2023 08:07:46\",\r\n        \"message\": \"La competencia dada no está asociada con el torneo\"\r\n    }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener las competencias de un torneo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Numero de competencias > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/torneos/{{torneo_id}}/competencias",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"torneos",
+						"{{torneo_id}}",
+						"competencias"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener las competencias de un torneo",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/torneos/{{torneo_id_1}}/competencias",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"torneos",
+								"{{torneo_id_1}}",
+								"competencias"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\r\n    {\r\n        \"id\": 1,\r\n        \"nombre\": \"VCT 2022: East Asia Last Chance Qualifier\",\r\n        \"duracion\": \"47:56\",\r\n        \"equiposParticipantes\": [],\r\n        \"competencias\": [],\r\n        \"equipoGanador\":\r\n            {\r\n                \"id\": 1,\r\n                \"nombre\": \"On Sla2ers\",\r\n                \"paisProcedencia\": \"Corea del Sur\",\r\n                \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/200px-Flag_of_South_Korea.svg.png\",\r\n                \"logo\": \"https://liquipedia.net/commons/images/1/1b/On_Sla2ers_full_allmode.png\"\r\n            },\r\n        \"torneo\": \r\n            {\r\n                \"id\": 1,\r\n                \"fechaFinalizacion\": \"2022-03-29\",\r\n                \"paisRealizacion\": \"Canada\",\r\n                \"nombreTorneo\": \"Valorant Champions Tour 2022\",\r\n                \"imagenRepresentativa\": \"https://cdn.oneesports.gg/cdn-data/2021/12/Valorant_VCT2022season.jpg\",\r\n                \"enlacePaginaWeb\": \"https://valorantesports.com/news/champions-tour-2022\",\r\n                \"organizador\": \"Riot Games\",\r\n                \"videojuego\": \"Valorant\"\r\n            },\r\n        \"mvp\": \r\n            {\r\n                \"id\": 1,\r\n                \"nombre\": \"Lee Ji-ho\",\r\n                \"nickname\": \"Blueming\",\r\n                \"nacionalidad\": \"Corea del Sur\",\r\n                \"fotografia\": \"https://liquipedia.net/commons/images/a/a4/PlayerImagePlaceholder.png\",\r\n                \"fechaNacimiento\": \"12-05-2004\",\r\n                \"equipo\":\r\n                {\r\n                    \"id\": 1,\r\n                    \"nombre\": \"On Sla2ers\",\r\n                    \"paisProcedencia\": \"Corea del Sur\",\r\n                    \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/200px-Flag_of_South_Korea.svg.png\",\r\n                    \"logo\": \"https://liquipedia.net/commons/images/1/1b/On_Sla2ers_full_allmode.png\"\r\n                }\r\n            }\r\n    }\r\n]"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,64 @@
+<div *ngIf="selected">
+  <app-torneo-detail [torneoDetail]="selectedTorneo"></app-torneo-detail>
+</div>
+
+<hr>
+<h2 class="listTitle">Lista de Torneos</h2>
+<p class="indication">¡Esta es la lista de torneos que se encuentran registrados en el Esports Hall!</p>
+<p class="indication">La cantidad total de torneos registrados es de: {{ getConteoTotalTorneos() }} torneos y el Videojuego más frecuente en los torneos es: {{ getVideojuegoMasFrecuente()}}</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-8">
+      <p class="indication2">Selecciona un filtro para buscar Torneos:</p>
+      </div>
+    <div class="col-4">
+        <button class="boton"(click)="ordenarTorneos()">Ordenar alfabéticamente</button>
+        <br>
+    </div>
+  </div> <!-- End of Row for Filters-->
+
+  <div class="row align-items-center">
+    <div class="col-2">
+      <input class="searchBox" type="text" [(ngModel)]="searchTerm" (input)="filterTorneos()" placeholder="Buscar">
+    </div>
+
+    <div class="col-4">
+      <select class="custom-select" [(ngModel)]="selectedFilter" (change)="filterTorneos()">
+        <option value="nombre">Nombre</option>
+        <option value="organizador">Organizador</option>
+        <option value="videojuego">Videojuego</option>
+      </select>
+    </div>
+
+    <div class="col-6">
+      <div class="text-end">
+        <pagination-controls class="custom-pagination" (pageChange)="p = $event"
+                             previousLabel="Anterior"
+                             nextLabel="Siguiente">
+        </pagination-controls>
+      </div>
+    </div>
+
+    <div class="col mb-2" *ngFor="let torneo of torneos | paginate: { itemsPerPage: 24, currentPage: p }">
+          <div class="card p-2" style="width: 15rem; height: 33rem">
+              <img
+                class="card-img-top"
+                src="{{ torneo.imagenRepresentativa }}"
+                alt="{{ torneo.nombreTorneo }}"
+                (click)="onSelected(torneo)"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a class = "linkToDetail" routerLink="/torneos/{{ torneo.id }}">{{ torneo.nombreTorneo }}</a>
+                </h5>
+                  <p class="card-text">
+                     <strong>Organizador: </strong>
+                     {{ torneo.organizador }}
+                     <strong>Videojuego: </strong>
+                    {{ torneo.videojuego }}
+                 </p>
+              </div>
+           </div>
+      </div>
+   </div>
+</div>

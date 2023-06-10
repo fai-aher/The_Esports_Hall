@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <p class="h3 p-3">{{ jugadorDetail.nickname }}</p>
+  <div class="row">
+    <div class="col-3">
+      <div class="thumb">
+        <img
+          class="img-fluid"
+          src="{{ jugadorDetail.fotografia }}"
+          alt="{{ jugadorDetail.nombre }}"
+        />
+      </div>
+    </div>
+    <div class="col">
+      <dl class="list">
+        <dt>Fecha de Nacimiento</dt>
+        <dd>{{ jugadorDetail.fechaNacimiento | date:'dd-MM-yyyy'}}</dd>
+        <hr />
+        <dt class="bold">Nacionalidad</dt>
+        <dd>{{ jugadorDetail.nacionalidad }}</dd>
+        <hr>
+        <dt>Competencias Participadas</dt>
+        <ul>
+          <li *ngFor="let competencia of jugadorDetail.competenciasParticipadas">
+            <a class="clickers" routerLink="/competencias/{{ competencia.id }}">{{ competencia.nombre }}</a>, perteneciente al Torneo: {{ competencia.torneo.nombreTorneo }}
+            <br>
+            <img class="playerImage" src="{{ competencia.torneo.imagenRepresentativa }}" alt="{{ competencia.torneo.nombreTorneo }}">
+            <br>
+          </li>
+        </ul>
+        <hr />
+        <dt>Torneos Participados</dt>
+        <ul>
+          <li *ngFor="let torneo of jugadorDetail.torneosParticipados">
+            <a class="clickers" routerLink="/torneos/{{torneo.id}}">{{ torneo.nombreTorneo }}</a>
+          </li>
+        </ul>
+        <hr />
+        <dt>Logros Obtenidos</dt>
+        <ul>
+          <li *ngFor="let logro of jugadorDetail.logrosObtenidos">
+            {{ logro.descripcion }}
+          </li>
+        </ul>
+        <hr />
+      </dl>
+    </div>
+  </div>
+ </div>

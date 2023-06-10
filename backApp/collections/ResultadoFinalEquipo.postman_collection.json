@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "aa880891-57f7-4ccf-80f1-2a01c40f02c2",
+		"name": "ResultadoFinalEquipo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25627050"
+	},
+	"item": [
+		{
+			"name": "Establecer Equipo Involucrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Relacionar Equipo a Resultado final(Post) no genera error.\"] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/resultados/{{resultado_id_1}}/equipoInvolucrado/{{equipo_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados",
+						"{{resultado_id_1}}",
+						"equipoInvolucrado",
+						"{{equipo_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Establecer un Invalido Equipo Involucrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se ha encontrado el equipo con el id pasado por parametro.\"] = responseCode.code === 404;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No se ha encontrado el equipo con el id pasado por parametro.\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/resultados/{{resultado_id_1}}/equipoInvolucrado/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados",
+						"{{resultado_id_1}}",
+						"equipoInvolucrado",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener el Equipo Involucrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"Get Equipo Involucrado no genera error.\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/resultados/{{resultado_id_1}}/equipoInvolucrado",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados",
+						"{{resultado_id_1}}",
+						"equipoInvolucrado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remplazar el Equipo Involucrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(responseBody);\r",
+							"var data = JSON.parse(responseBody);\r",
+							"tests[\"Relacionar equipo a resultado No genera error en el Put (actualizacion)\"] = responseCode.code === 200;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": {{equipo_id_2}},\r\n    \"nombre\": \"LaTabernaGaming\",\r\n    \"paisProcedencia\": \"Colombia\",\r\n    \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg\",\r\n    \"logo\": \"https://variety.com/wp-content/uploads/2022/06/Puss-in-Boots-The-Last-Wish.jpg?w=681&h=383&crop=1\",\r\n    \"competenciasParticipadas\": [{\"id\":{{competencia_id_1}}}]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resultados/{{resultado_id_1}}/equipoInvolucrado",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados",
+						"{{resultado_id_1}}",
+						"equipoInvolucrado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remplazar por Invalido Equipo Involucrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"No se ha encontrado el equipo con el que se va a actualizar.\"] = responseCode.code === 404;\r",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"No se ha encontrado el equipo con el que se va a actualizar.\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":0,\r\n    \"nombre\": \"\",\r\n    \"paisProcedencia\": \"Colombia\",\r\n    \"banderaPais\": \"https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg\",\r\n    \"logo\": \"https://variety.com/wp-content/uploads/2022/06/Puss-in-Boots-The-Last-Wish.jpg?w=681&h=383&crop=1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resultados/{{resultado_id_1}}/equipoInvolucrado",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados",
+						"{{resultado_id_1}}",
+						"equipoInvolucrado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar el Equipo Involucrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Equipo no genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/resultados/{{resultado_id_1}}/equipoInvolucrado",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resultados",
+						"{{resultado_id_1}}",
+						"equipoInvolucrado"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

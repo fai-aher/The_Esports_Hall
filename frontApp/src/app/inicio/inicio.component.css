@@ -1,0 +1,136 @@
+.title {
+  color: white;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.title-equipos {
+  color: white;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 25%;
+}
+
+.title-jugadores {
+  color: white;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 35%;
+}
+
+.emphasis-purple {
+  color:#A8B5EE;
+}
+
+.torneo-card-title {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.torneo-card-videojuego {
+  color: #38e6a6;
+  font-weight: bold;
+}
+
+.torneo-card-organizador {
+  margin-top: -10px;
+}
+
+.torneo-card-pais {
+  margin-top: -20px;
+}
+
+.card {
+  border-radius: 20px;
+}
+
+.torneo-card {
+  width: 400px;
+}
+
+.dark-card {
+  background-color: #111418;
+  color: white;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.dark-card-title {
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.card-img {
+  border-radius: 20px 20px 0px 0px;
+  height: 250px;
+  width:auto;
+  overflow: hidden;
+}
+
+.carousel-img {
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+}
+
+.ultimos-torneos {
+  display: inline-flex;
+}
+
+.torneo-card-medio {
+  margin-left: 35px;
+  margin-right: 35px;
+}
+
+.progress {
+  height: 30px;
+  border-radius: 7px;
+  width: 300px;
+  background-color: #cce9de;
+}
+
+.progress-bar {
+  background-color: #38e6a6;
+}
+
+.dark-card-divider {
+  border: 0;
+  border-top: 2px solid white;
+  width: 50%;
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+
+.dark-card-secondary {
+  color: #5A6270;
+  margin-left: 15px;
+}
+
+.jugadorCountry {
+  padding-right:15px;
+  height: 30px;
+}
+
+.equipoIndex {
+  margin-right: 15px;
+  margin-left: 0px;
+}
+
+.bannerText {
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 1));
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center{
+  text-align: center;
+}
