@@ -17,7 +17,6 @@ We are a team of four software engineering students at Los Andes University in B
   - [Sonar](http://157.253.238.75:8080/sonar-isis2603/)
 
 <hr>
-
 ## Front-end Project Implementation Plan
 Para la implementación del front-end de la aplicación web de Esports, el equipo decidió realizar la siguiente repartición de responsabilidades:
 
