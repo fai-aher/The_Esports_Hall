@@ -31,9 +31,11 @@
         </ul>
         <hr />
         <dt>Resultados Finales</dt>
+        En esta competencia:
+        <br>
         <ul>
           <li *ngFor="let resultadoFinal of competenciaDetail.resultadosFinales">
-            En la Competencia con número de identificación <a class="clickers" routerLink="/competencias/{{ resultadoFinal.competenciaRelacionada.id }}">{{ resultadoFinal.competenciaRelacionada.id }}</a>, alcanzó la posición final: {{ resultadoFinal.posicionFinal }}.
+            El Equipo con nombre: <a class="clickers" routerLink="/equipos/{{ resultadoFinal.equipoInvolucrado.id }}">{{ resultadoFinal.equipoInvolucrado.nombre }}</a>, alcanzó la posición final: {{ resultadoFinal.posicionFinal }}.
           </li>
         </ul>
       </dl>
