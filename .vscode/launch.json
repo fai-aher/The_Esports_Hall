@@ -2,11 +2,28 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MainApplication",
+            "request": "launch",
+            "mainClass": "co.edu.uniandes.dse.esports.MainApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-MainApplication<ISIS2603_202310_S4_E1_ESports_Back>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "co.edu.uniandes.dse.esports.MainApplication",
             "projectName": "ISIS2603_202310_S4_E1_ESports_Back",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MainApplication<backApp>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.edu.uniandes.dse.esports.MainApplication",
+            "projectName": "backApp",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }

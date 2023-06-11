@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>co.edu.uniandes.dse</groupId>
-	<artifactId>ISIS2603_202310_S4_E1_ESports_Back</artifactId>
+	<artifactId>backApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ISIS2603_202310_S4_E1_ESports_Back</name>
+	<name>backApp</name>
 	<description>Course Project for ISIS2603</description>
 	<properties>
 		<java.version>11</java.version>
