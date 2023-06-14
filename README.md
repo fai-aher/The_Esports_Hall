@@ -6,10 +6,6 @@
 
 ## About the Team
 
-<p align="center">
-  <img src="https://github.com/Uniandes-isis2603/ISIS2603_202310_S4_E1_ESports_Back/blob/master/Imagenes/ASAMIX%20watermark.png?raw=true" width="500" title="Maria was here">
-</p>
-
 We are a team of four software engineering students at Los Andes University in Bogota, Colombia. Our goal in this project is to create a web application that consists of an Esports historical wiki that contains information about tournaments, competitions between teams and the players that make them up.
 
 ## Links to Check Project Integrity
